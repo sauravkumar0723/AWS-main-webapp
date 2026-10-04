@@ -3,87 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My AWS S3 Static Website</title>
+
+    <title>AWS CI/CD Static Website Deployment</title>
 
     <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial, Helvetica, sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        body{
-            background:linear-gradient(135deg,#0078D7,#00C6FF);
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            color:white;
+        body {
+            background: linear-gradient(135deg, #232F3E, #FF9900);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
         }
 
-        .container{
-            text-align:center;
-            background:rgba(255,255,255,0.1);
-            padding:40px;
-            border-radius:15px;
-            backdrop-filter:blur(10px);
-            box-shadow:0 10px 25px rgba(0,0,0,0.2);
-            max-width:700px;
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 45px;
+            border-radius: 18px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
         }
 
-        h1{
-            font-size:3rem;
-            margin-bottom:20px;
+        h1 {
+            font-size: 2.7rem;
+            margin-bottom: 20px;
         }
 
-        p{
-            font-size:1.2rem;
-            margin-bottom:15px;
-            line-height:1.6;
+        p {
+            font-size: 1.15rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
 
-        .btn{
-            display:inline-block;
-            margin-top:20px;
-            padding:12px 25px;
-            background:white;
-            color:#0078D7;
-            text-decoration:none;
-            font-weight:bold;
-            border-radius:8px;
-            transition:.3s;
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 0;
         }
 
-        .btn:hover{
-            background:#f1f1f1;
-            transform:scale(1.05);
+        .service {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            min-width: 150px;
         }
 
-        footer{
-            margin-top:30px;
-            font-size:14px;
-            opacity:.8;
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: white;
+            color: #232F3E;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background: #f1f1f1;
+            transform: scale(1.05);
+        }
+
+        /* Visible keyboard focus indicator */
+        .btn:focus-visible {
+            outline: 4px solid #ffffff;
+            outline-offset: 4px;
+            box-shadow: 0 0 0 2px #232F3E;
+        }
+
+        /* Fallback for browsers without :focus-visible */
+        .btn:focus {
+            outline: 3px solid #ffffff;
+            outline-offset: 3px;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.85;
+        }
+
+        /* Improve readability on smaller screens */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .service {
+                width: 100%;
+            }
+        }
+
+        /* Respect users who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+                animation: none !important;
+            }
+
+            .btn:hover {
+                transform: none;
+            }
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h1>🚀 Welcome to AWS S3 Static Website- updated site</h1>
+    <main class="container" aria-labelledby="page-title">
 
-    <p>Your website is successfully hosted using Amazon S3 Static Website Hosting.</p>
+        <header>
+            <h1 id="page-title">
+                🚀 AWS Static Website Deployment
+            </h1>
+        </header>
 
-    <p>This page is being served directly from an S3 bucket without any web server.</p>
+        <section aria-labelledby="deployment-description">
+            <h2 id="deployment-description" class="visually-hidden">
+                Deployment Description
+            </h2>
 
-    <a href="https://aws.amazon.com/s3/" target="_blank" class="btn">
-        Learn More About Amazon S3
-    </a>
+            <p>
+                Deploy a static website on AWS using
+                <strong>CodePipeline, CodeBuild, and Amazon S3.</strong>
+            </p>
 
-    <footer>
-        © 2026 AWS Static Website Demo
-    </footer>
-</div>
+            <p>
+                This website is automatically built and deployed through
+                an AWS CI/CD pipeline whenever new code is pushed to
+                the source repository.
+            </p>
+        </section>
+
+        <section
+            class="services"
+            aria-labelledby="aws-services-title"
+        >
+            <h2 id="aws-services-title" class="visually-hidden">
+                AWS Services Used
+            </h2>
+
+            <div class="service" role="group" aria-label="Source Code">
+                📦 Source Code
+            </div>
+
+            <div class="service" role="group" aria-label="AWS CodeBuild">
+                ⚙️ CodeBuild
+            </div>
+
+            <div class="service" role="group" aria-label="AWS CodePipeline">
+                🔄 CodePipeline
+            </div>
+
+            <div class="service" role="group" aria-label="Amazon S3">
+                ☁️ Amazon S3
+            </div>
+        </section>
+
+        <section aria-labelledby="workflow-title">
+            <h2 id="workflow-title" class="visually-hidden">
+                CI/CD Deployment Workflow
+            </h2>
+
+            <p>
+                <strong>CI/CD Flow:</strong><br>
+                Source Repository → CodePipeline → CodeBuild → Amazon S3
+            </p>
+        </section>
+
+        <nav aria-label="AWS resources">
+            <a
+                href="https://aws.amazon.com/codepipeline/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn"
+                aria-label="Learn more about AWS CodePipeline (opens in a new tab)"
+            >
+                Learn More About AWS CodePipeline
+            </a>
+        </nav>
+
+        <footer>
+            <p>
+                © 2026 AWS CI/CD Static Website Deployment Demo
+            </p>
+        </footer>
+
+    </main>
 
 </body>
 </html>
