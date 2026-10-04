@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My AWS S3 Static Website</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#0078D7,#00C6FF);
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:white;
+        }
+
+        .container{
+            text-align:center;
+            background:rgba(255,255,255,0.1);
+            padding:40px;
+            border-radius:15px;
+            backdrop-filter:blur(10px);
+            box-shadow:0 10px 25px rgba(0,0,0,0.2);
+            max-width:700px;
+        }
+
+        h1{
+            font-size:3rem;
+            margin-bottom:20px;
+        }
+
+        p{
+            font-size:1.2rem;
+            margin-bottom:15px;
+            line-height:1.6;
+        }
+
+        .btn{
+            display:inline-block;
+            margin-top:20px;
+            padding:12px 25px;
+            background:white;
+            color:#0078D7;
+            text-decoration:none;
+            font-weight:bold;
+            border-radius:8px;
+            transition:.3s;
+        }
+
+        .btn:hover{
+            background:#f1f1f1;
+            transform:scale(1.05);
+        }
+
+        footer{
+            margin-top:30px;
+            font-size:14px;
+            opacity:.8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🚀 Welcome to AWS S3 Static Website- updated site</h1>
+
+    <p>Your website is successfully hosted using Amazon S3 Static Website Hosting.</p>
+
+    <p>This page is being served directly from an S3 bucket without any web server.</p>
+
+    <a href="https://aws.amazon.com/s3/" target="_blank" class="btn">
+        Learn More About Amazon S3
+    </a>
+
+    <footer>
+        © 2026 AWS Static Website Demo
+    </footer>
+</div>
+
+</body>
+</html>
