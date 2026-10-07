@@ -1,0 +1,52 @@
+##  Terraform Script: S3 Bucket with ACL
+
+For current AWS provider versions, use a separate aws_s3_bucket_acl resource.
+
+main.tf
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 6.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = "my-terraform-acl-bucket-12345"
+}
+
+resource "aws_s3_bucket_acl" "my_bucket_acl" {
+  depends_on = [aws_s3_bucket_ownership_controls.my_bucket]
+
+  bucket = aws_s3_bucket.my_bucket.id
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_ownership_controls" "my_bucket" {
+  bucket = aws_s3_bucket.my_bucket.id
+
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+Commands
+terraform init
+terraform validate
+terraform plan
+terraform apply
+
+To remove it:
+
+terraform destroy
+Important
+aws_s3_bucket → creates the S3 bucket.
+aws_s3_bucket_ownership_controls → configures object ownership.
+aws_s3_bucket_acl → applies the ACL.
+acl = "private" → bucket is private.
+
+Note: AWS S3 now commonly uses Bucket owner enforced ownership, which disables ACLs. If ACLs are specifically required, ownership controls must allow ACLs as shown above.
