@@ -1,0 +1,50 @@
+# Terraform: Create S3 Bucket with Versioning
+main.tf
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 6.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = "my-terraform-versioning-bucket-12345"
+}
+
+resource "aws_s3_bucket_versioning" "versioning" {
+  bucket = aws_s3_bucket.my_bucket.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+Commands
+terraform init
+terraform validate
+terraform plan
+terraform apply
+
+To delete the bucket and resources:
+
+terraform destroy
+What happens?
+Terraform
+   ↓
+AWS Provider
+   ↓
+Create S3 Bucket
+   ↓
+Enable Versioning
+   ↓
+S3 Bucket
+   ├── File v1
+   ├── File v2
+   └── File v3
+
+Important: S3 bucket names must be globally unique. Change my-terraform-versioning-bucket-12345 to your own unique name.
