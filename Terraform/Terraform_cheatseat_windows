@@ -1,0 +1,62 @@
+WINDOWS
+--------------------------------
+pwd
+dir
+cd
+cd ..
+mkdir
+cls
+del
+
+
+GIT
+--------------------------------
+git init
+git status
+git add .
+git commit -m "message"
+git log --oneline
+git branch
+git switch
+git pull
+git push
+git clone
+
+
+TERRAFORM
+--------------------------------
+terraform init
+terraform fmt
+terraform validate
+terraform plan
+terraform apply
+terraform show
+terraform state list
+terraform destroy
+
+
+AWS
+--------------------------------
+aws --version
+aws configure
+aws sts get-caller-identity
+aws configure get region
+
+
+SSH
+--------------------------------
+ssh -i "key.pem" ec2-user@<PUBLIC-IP>
+
+
+=========================================
+terraform init
+       ↓
+terraform fmt
+       ↓
+terraform validate
+       ↓
+terraform plan
+       ↓
+terraform apply
+       ↓
+terraform destroy
