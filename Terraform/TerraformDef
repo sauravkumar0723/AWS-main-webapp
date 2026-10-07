@@ -12,3 +12,22 @@
 - In simple words: Terraform allows us to create and manage cloud infrastructure automatically using code instead of doing it manually through the cloud console.
 
 - Example: We can write Terraform code to create an AWS EC2 instance, security group, and other required resources, and Terraform will create them automatically.
+
+Purpose
+Automates infrastructure provisioning.
+Makes infrastructure repeatable and consistent.
+Helps manage cloud resources such as EC2, S3, VPC, databases, and security groups.
+Reduces manual work and configuration errors.
+Functionality
+
+Terraform uses declarative configuration files to define the desired infrastructure. It then compares the desired configuration with the current infrastructure and determines what changes are required.
+
+Main commands:
+
+terraform init      → Initialize the project
+terraform plan      → Preview changes
+terraform apply     → Create/update infrastructure
+terraform destroy   → Delete infrastructure
+
+In simple words:
+Terraform allows us to define infrastructure as code and automatically create, manage, update, and delete cloud resources.
