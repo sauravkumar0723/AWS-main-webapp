@@ -1,0 +1,414 @@
+========================================================
+        LINUX + AWS + TERRAFORM COMMAND CHEAT SHEET
+========================================================
+
+
+========================
+1. LINUX BASIC COMMANDS
+========================
+
+pwd
+# Current directory
+
+ls
+# Files and folders
+
+ls -la
+# Hidden files ke saath
+
+cd folder-name
+# Folder ke andar jaana
+
+cd ..
+# Ek level back
+
+cd ~
+# Home directory
+
+clear
+# Terminal clear
+
+history
+# Previous commands
+
+
+========================
+2. FILE & DIRECTORY COMMANDS
+========================
+
+touch file.txt
+# New file
+
+mkdir my-folder
+# New directory
+
+mkdir -p parent/child
+# Nested directory
+
+cp file.txt backup.txt
+# Copy file
+
+mv old.txt new.txt
+# Rename/move file
+
+rm file.txt
+# Delete file
+
+rm -r my-folder
+# Delete directory
+
+cat file.txt
+# File content
+
+
+========================
+3. VIM COMMANDS
+========================
+
+vim main.tf
+# Open file
+
+i
+# Insert/Edit mode
+
+Esc
+# Exit insert mode
+
+:w
+# Save
+
+:wq
+# Save and Exit
+
+:q!
+# Exit without saving
+
+
+========================
+4. LINUX PERMISSIONS
+========================
+
+ls -l
+# Permissions check
+
+chmod 400 terraform_keyPair.pem
+# Private SSH key permission
+
+chmod +x script.sh
+# Executable permission
+
+
+========================
+5. LINUX SYSTEM COMMANDS
+========================
+
+ps
+# Running processes
+
+ps aux
+# All running processes
+
+top
+# Live processes
+
+kill <PID>
+# Kill process
+
+df -h
+# Disk space
+
+du -sh .
+# Current folder size
+
+free -h
+# RAM usage
+
+lscpu
+# CPU information
+
+
+========================
+6. LINUX NETWORK COMMANDS
+========================
+
+ip addr
+# IP address
+
+ping google.com
+# Network connectivity
+
+ss -tulpn
+# Listening ports
+
+curl ifconfig.me
+# Public IP
+
+
+========================
+7. AMAZON LINUX PACKAGE COMMANDS
+========================
+
+sudo dnf update -y
+# Update packages
+
+sudo dnf install <package-name> -y
+# Install package
+
+sudo yum update -y
+# Older Amazon Linux
+
+sudo yum install <package-name> -y
+# Install package
+
+
+========================
+8. SSH COMMANDS
+========================
+
+ssh -i "terraform_keyPair.pem" ec2-user@<PUBLIC-IP>
+# Connect Amazon Linux EC2
+
+ssh -i "terraform_keyPair.pem" ubuntu@<PUBLIC-IP>
+# Connect Ubuntu EC2
+
+scp -i "terraform_keyPair.pem" file.txt ec2-user@<PUBLIC-IP>:/home/ec2-user/
+# Copy local file to EC2
+
+
+========================
+9. AWS CLI
+========================
+
+aws --version
+# AWS CLI version
+
+aws sts get-caller-identity
+# Current AWS identity
+
+aws configure
+# Configure AWS credentials
+
+aws configure get region
+# Check region
+
+export AWS_DEFAULT_REGION=ap-south-1
+# Set region
+
+
+========================
+10. AWS ENVIRONMENT VARIABLES
+========================
+
+env | grep AWS
+# Check AWS variables
+
+echo $AWS_ACCESS_KEY_ID
+# Show Access Key ID
+
+echo ${AWS_SECRET_ACCESS_KEY:+SECRET_KEY_IS_SET}
+# Check Secret Key is set without showing it
+
+export AWS_ACCESS_KEY_ID="YOUR_ACCESS_KEY"
+export AWS_SECRET_ACCESS_KEY="YOUR_SECRET_KEY"
+# Set credentials
+
+unset AWS_ACCESS_KEY_ID
+unset AWS_SECRET_ACCESS_KEY
+# Remove credentials from current shell
+
+
+========================
+11. AWS REGION
+========================
+
+ap-south-1
+# Mumbai Region
+
+ap-south-1a
+ap-south-1b
+ap-south-1c
+# Availability Zones
+
+
+========================
+12. TERRAFORM BASIC COMMANDS
+========================
+
+terraform version
+# Terraform version
+
+terraform init
+# Initialize Terraform
+
+terraform fmt
+# Format Terraform files
+
+terraform validate
+# Validate configuration
+
+terraform plan
+# See what Terraform will create/change
+
+terraform apply
+# Create/update resources
+
+terraform apply --auto-approve
+# Create/update without confirmation
+
+terraform show
+# Show current state
+
+terraform state list
+# List managed resources
+
+terraform state show aws_instance.linux-VM
+# Show specific resource
+
+terraform plan -destroy
+# See what will be destroyed
+
+terraform destroy
+# Destroy resources
+
+terraform destroy --auto-approve
+# Destroy without confirmation
+
+
+========================
+13. TERRAFORM WORKFLOW
+========================
+
+vim main.tf
+
+terraform init
+
+terraform fmt
+
+terraform validate
+
+terraform plan
+
+terraform apply
+
+# Enter:
+yes
+
+# After work:
+
+terraform destroy
+
+# Enter:
+yes
+
+
+========================
+14. TERRAFORM AWS PROVIDER
+========================
+
+provider "aws" {
+  region = "ap-south-1"
+}
+
+
+========================
+15. SECURITY GROUP
+========================
+
+# Security Group ID example:
+
+sg-*************
+
+# Use SG ID like this:
+
+vpc_security_group_ids = ["sg-**********"]
+
+
+========================
+16. IMPORTANT TERRAFORM FILES
+========================
+
+main.tf
+# Main Terraform configuration
+
+variables.tf
+# Variables
+
+outputs.tf
+# Outputs
+
+terraform.tfvars
+# Variable values
+
+terraform.tfstate
+# Terraform state
+
+.terraform/
+# Terraform working directory
+
+
+========================
+17. COMPLETE TERRAFORM FLOW
+========================
+
+1. vim main.tf
+
+2. terraform init
+
+3. terraform fmt
+
+4. terraform validate
+
+5. terraform plan
+
+6. terraform apply
+
+7. yes
+
+8. AWS resource created
+
+9. terraform show
+
+10. terraform state list
+
+11. terraform destroy
+
+12. yes
+
+
+========================================================
+              MOST IMPORTANT COMMANDS
+========================================================
+
+pwd
+ls
+cd
+mkdir
+touch
+vim
+cat
+cp
+mv
+rm
+chmod
+sudo
+ssh
+scp
+ps
+top
+df -h
+free -h
+ip addr
+curl
+
+aws --version
+aws sts get-caller-identity
+
+terraform init
+terraform fmt
+terraform validate
+terraform plan
+terraform apply
+terraform show
+terraform state list
+terraform destroy
+========================================================
