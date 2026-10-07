@@ -1,0 +1,63 @@
+1. variables.tf
+
+    variable "github_owner" {
+  description = "GitHub username"
+  type        = string
+}
+
+variable "repository_name" {
+  description = "GitHub repository name"
+  type        = string
+  default     = "terraform-demo"
+}
+
+variable "repository_description" {
+  description = "Description of repository"
+  type        = string
+  default     = "Created using Terraform"
+}
+
+variable "visibility" {
+  description = "Repository visibility"
+  type        = string
+  default     = "public"
+}
+
+
+2. main.tf
+
+resource "github_repository" "example" {
+  name        = var.repository_name
+  description = var.repository_description
+  visibility  = var.visibility
+}
+
+
+3. terraform.tfvars
+github_owner           = "your-username"
+repository_name        = "my-terraform-repo"
+repository_description = "My repository created using Terraform"
+visibility             = "public"
+
+4. Run Commands 
+terraform init
+terraform validate
+terraform plan
+terraform apply
+
+# Main concept
+variables.tf
+     ↓
+Define variables
+     ↓
+terraform.tfvars
+     ↓
+Provide values
+     ↓
+main.tf
+     ↓
+Use variables with var.variable_name
+
+
+
+
