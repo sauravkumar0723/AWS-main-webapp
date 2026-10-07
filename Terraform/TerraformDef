@@ -1,0 +1,14 @@
+## Definition --> Terraform 
+
+- Terraform is an Infrastructure as Code (IaC) tool developed by HashiCorp. 
+- It allows developers to define, create, manage, and delete cloud infrastructure using configuration files instead of doing everything manually.
+
+- It is used to provision, configure, manage, and delete infrastructure such as AWS EC2 instances, S3 buckets, VPCs, databases, and security groups using code.
+
+- Terraform uses declarative configuration files to define the desired infrastructure. 
+
+- It compares the current infrastructure with the desired configuration and determines what changes need to be made.
+
+- In simple words: Terraform allows us to create and manage cloud infrastructure automatically using code instead of doing it manually through the cloud console.
+
+- Example: We can write Terraform code to create an AWS EC2 instance, security group, and other required resources, and Terraform will create them automatically.
